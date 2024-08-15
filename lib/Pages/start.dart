@@ -1,83 +1,5 @@
 import 'package:flutter/material.dart';
 
-class start extends StatefulWidget {
-  const start({super.key});
-
-  @override
-  State<start> createState() => _startState();
-}
-
-class _startState extends State<start> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
-            body: Container(
-      height: MediaQuery.sizeOf(context).height,
-      width: MediaQuery.sizeOf(context).width,
-      color: Colors.grey[500],
-      child: Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.all(10),
-            child: TweenAnimationBuilder(
-              duration: Duration(microseconds: 5000),
-              builder: (BuildContext context, double _value, child) {
-                return Opacity(
-                  opacity: _value,
-                  child: Padding(
-                    padding: EdgeInsets.all(5),
-                  ),
-                );
-              },
-              tween: Tween<double>(begin: 0, end: 1),
-              child: Text(
-                "hard work always pays off",
-                style:
-                    TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(
-                    "images/her.png",
-                  ),
-                  fit: BoxFit.cover),
-            ),
-          ),
-          TweenAnimationBuilder(
-              child: Padding(
-                padding: EdgeInsets.all(10),
-                child: Container(
-                  child: MaterialButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Login()),
-                      );
-                    },
-                  ),
-                ),
-              ),
-              tween: Tween<double>(begin: 0, end: 1),
-              duration: Duration(microseconds: 50000),
-              builder: (BuildContext context, double _value, child) {
-                return Opacity(
-                  opacity: _value,
-                  child: Padding(
-                    padding: EdgeInsets.all(10),
-                    child: child,
-                  ),
-                );
-              })
-        ],
-      ),
-    )));
-  }
-}
-
 class Login extends StatefulWidget {
   const Login({super.key});
 
@@ -88,6 +10,63 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return MaterialApp(
+        home: Scaffold(
+      backgroundColor: Colors.purple,
+      body: Container(
+        //decoration: BoxDecoration(color: Colors.purple),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TweenAnimationBuilder(
+              tween: Tween<double>(begin: 0, end: 1),
+              duration: Duration(milliseconds: 2000),
+              builder: (BuildContext context, double _value, child) {
+                return Opacity(
+                  opacity: _value,
+                  child: Padding(
+                    padding: EdgeInsets.all(15),
+                    child: child,
+                  ),
+                );
+              },
+              child: Text(
+                "Find your Interest",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30),
+              ),
+            ),
+            Container(
+              child: Image.asset("images/40.png"),
+            ),
+            TweenAnimationBuilder(
+              tween: Tween<double>(begin: 0, end: 1),
+              duration: Duration(milliseconds: 2000),
+              builder: (BuildContext context, double _value, child) {
+                return Opacity(
+                  opacity: _value,
+                  child: Padding(
+                    padding: EdgeInsets.all(15),
+                    child: child,
+                  ),
+                );
+              },
+              child: Container(
+                width: 300,
+                height: 50,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.lightBlue),
+                  onPressed: () {},
+                  child: Text("Get Started"),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    ));
   }
 }
